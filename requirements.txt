@@ -1,0 +1,11 @@
+numpy
+pillow==10.0.0
+opencv-python-headless
+fastapi[standard]
+ultralytics
+urllib3
+boto3
+python-Levenshtein
+easyocr
+scikit-learn
+open_clip_torch
