@@ -127,3 +127,22 @@ def combine(*datasets: Dataset) -> Iterator[Tuple[str, str, str]]:
         combined = ",".join(sorted(data["categories"]))
         current_file = data["rows"][0][2]
         yield file_name, combined, current_file
+
+def ds_check_ctgr(ctgr_names: List[str], ds):
+    syn_list = [nameiddict_cor.get(cat, [cat]) for cat in ctgr_names]
+    for file_name, categories_str, current_file in ds():
+        if len(ctgr_names) == 1:
+            flag = 1 if any(s in categories_str for s in syn_list[0]) else 0
+            yield file_name, flag, current_file
+        else:
+            flags = []
+            for synonyms in syn_list:
+                flags.append(1 if any(s in categories_str for s in synonyms) else 0)
+            yield file_name, flags, current_file
+
+
+def ds_num_iter(num: int, yield_ds):
+    for i, data in enumerate(yield_ds):
+        if i >= num:
+            break
+        yield data
