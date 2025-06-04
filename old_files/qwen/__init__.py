@@ -1,0 +1,1 @@
+from .qwendetector import QwenDetector

@@ -1,0 +1,10 @@
+numpy
+fastapi[standard]
+ultralytics
+opencv-python-headless
+pillow==10.0.0
+urllib3
+boto3
+python-Levenshtein
+easyocr
+scikit-learn
